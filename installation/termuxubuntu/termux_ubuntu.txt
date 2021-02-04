@@ -1,0 +1,17 @@
+#See instructions here
+https://github.com/raspberrypi/pico-sdk
+
+#login to termux-ubuntu,
+proot-distro login ubuntu-20.04
+
+#Install arm toolchain
+apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi
+
+#Download pico-sdk
+git clone https://github.com/raspberrypi/pico-sdk
+
+#Download pico-examples
+git clone https://github.com/raspberrypi/pico-examples
+
+
+
