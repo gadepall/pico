@@ -380,7 +380,7 @@ gpio_put(LED_PIN, 1);
         sleep_ms(250);
 \end{lstlisting}
 %
-इससे हम ज्ञात कर सकते हैं की पीको के दीप का शमीलनकाल 500 ms = 0.5 s।  
+इससे हम ज्ञात कर सकते हैं की पीको परिपथफलक के दीप का शमीलनकाल 500 ms = 0.5 s।  
 \item निर्देश \ref{सम:क्रमादेश} में 
 \label{सम:द्विआधार}
 \begin{lstlisting}
@@ -399,33 +399,36 @@ gpio_put(LED_PIN, 1);
 \begin{lstlisting}
 codes/setup/onoff/main.c
 \end{lstlisting}
-\item  सारणी \ref{table:input} एवं आकृति. \ref{fig:pin_sheet} द्वारा पीको में आगत कुश का उपयोग कर परिपथफलक में उपस्थित दीप
-को प्रकाशित करें.  एक अन्य कुश को निर्गत रूप देकर किसी बाह्य दीप को प्रकाशोर्जित करें.
+\item एक अन्य कुश को निर्गत रूप देकर किसी बाह्य दीप को प्रकाशोर्जित करें। 
+\\
+\solution  निम्न सारणी के अनुसार  दीप से  मेलन करें। प्रतिरोधक का उपयोग न भूलें। तत्पश्चात निम्न क्रमादेश का चालयन करें। 
+\begin{lstlisting}
+codes/setup/gpio/main.c
+\end{lstlisting}
 
-\begin{table}[]
+\begin{table}[!ht]
 \centering
 \begin{tabular}{|l|l|l|}
 \hline
 प्रकार & पीको कुश  &  गम्य \\ \hline
-आगत &  IO\_28 &  GND\\ \hline
-निर्गत  & IO\_11  &  LED\\ \hline
+निर्गत &  3V3 &  LED\\ \hline
+निर्गत  & GP0  &  LED\\ \hline
+
 \end{tabular}
-\caption{पीको के आगत/निर्गत कुश.}
-\label{table:input}
 \end{table}
+
+\item  निम्न क्रमादेश को चलायित कर GND से एक तंतु को GP0 से स्पर्शित करें। दीप प्रकाशहीन रहेगा। इस क्रिया की पुरावृत्ति पर  दीप श्मीलित होता रहेगा।  
+\begin{lstlisting}
+codes/setup/input/main.c
+\end{lstlisting}
+
 
 \begin{figure*}[!ht]
 \centering
-\includegraphics[width = \textwidth]{figs/pin_sheet.png}
+\includegraphics[width = \textwidth]{figs/pin_sheet.pdf}
 \caption{कुश आरेख}
 \label{fig:pin_sheet}
 \end{figure*}
-\solution निम्न क्रमादेश का चालयन करें. तत्पश्चात GND से योजित तंतु को दूर करें  एवं पुनः मेलन करें.  इस क्रिया 
-को परस्पर दोहरायें.
-\begin{lstlisting}
-codes/input/blink_ip.v
-codes/input/pygmy.pcf
-\end{lstlisting}
 \end{enumerate}
 \end{document}
 
