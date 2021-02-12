@@ -5,30 +5,30 @@ https://github.com/raspberrypi/pico-sdk
 startarch l user
 
 #Install arm toolchain
-cd /home/gadepall/txhome/
+cd /home/user/txhome/
 wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2
 tar -xvjf  gcc-arm-none-eabi-9-2020-q2-update-aarch64-linux.tar.bz2
-nano /home/gadepall/.bashrc
+nano /home/user/.bashrc
 #At the end of the file
-export PATH=/home/gadepall/txhome/gcc-arm-none-eabi-9-2020-q2-update/bin:$PATH
+export PATH=/home/user/txhome/gcc-arm-none-eabi-9-2020-q2-update/bin:$PATH
 #save and exit
 #Check arm version
 arm-none-eabi-gcc --version
-cd /home/gadepall/txhome
+cd /home/user/txhome
 
 #Download pico-sdk
 git clone https://github.com/raspberrypi/pico-sdk
 
 
 #Download blink program
-mkdir /home/gadepall/txhome/pico-examples
-cd /home/gadepall/txhome/pico-examples
+mkdir /home/user/txhome/pico-examples
+cd /home/user/txhome/pico-examples
 svn co https://github.com/gadepall/pico/trunk/arm/codes/setup/blink
-nano blink/CmakeLists.txt
+nano blink/CMakeLists.txt
 #Modify the following path to the sdk 
 include(/root/pico-sdk/pico_sdk_init.cmake)
 #as
-include(/home/gadepall/txhome/pico-sdk/pico_sdk_init.cmake)
+include(/home/user/txhome/pico-sdk/pico_sdk_init.cmake)
 #Steps for generating bin file
 cd blink
 mkdir build #do this only once
