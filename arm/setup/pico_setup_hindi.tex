@@ -336,7 +336,7 @@ https://github.com/gadepall/vaman/tree/master/arm/codes/blink
 \numberwithin{figure}{enumi}
 \numberwithin{table}{enumi}
 
-\item  पीको  के यूएसबी पत्तन के समक्ष   एक गण्ड  उपस्थित है।  इसे दबाते हुए  पीको एवं रास्पबेरी पै  को यूएसबी रज्जु से योजित करें।
+\item  पीको  के यूएसबी पत्तन के समक्ष   एक गण्ड (BOOTSEL) उपस्थित है।  इसे दबाते हुए  पीको एवं रास्पबेरी पै  को यूएसबी रज्जु से योजित करें।
 \item अब एंड्राइड यंत्र में टेरमक्स-उबुन्टु में प्रवेश करें ऐवं निम्न आदेशों का चालयन करें।
 \begin{lstlisting}
 cd ˜
@@ -345,9 +345,9 @@ mkdir build #केवल एक बार
 cd build
 cmake ..
 make -j4
-scp  blink.uf2 pi@192.168.0.114:
+scp  main.uf2 pi@192.168.0.114:
 \end{lstlisting}
-ऊपर blink.uf2  सञ्चिका प्रेषण पूर्व रास्पबेरी पै का उचित अनिकेत दें। 
+ऊपर main.uf2  सञ्चिका प्रेषण पूर्व रास्पबेरी पै का उचित अनिकेत दें। 
 \item अब रास्पबेरी पै  में प्रवेश कर निम्न  आदेश का चालयन करें
 \begin{lstlisting}
 sudo mkdir /mnt/pico #केवल एक बार 
@@ -357,6 +357,8 @@ sudo mv /mnt/pico
 sudo umount /mnt/pico
 \end{lstlisting}
 \item  तत्पश्चात यूएसबी पत्तन के दक्षिण दिशा में  प्रकाश उत्सर्जक पीत रंग  में श्मीलित होगा। 
+\item पीको को RUN कुश को GND से मेलन करें। तत्पश्चात BOOTSEL को दबाते हुए RUN-GND तंतु को GND
+से निकालें। दीप निरुज्जवल हो जाएगा। अब पीको का पुनः प्रस्फुरण किया जा सकता है। 
 \end{enumerate}
 %
 \section{अतिकाल}
@@ -370,14 +372,14 @@ sudo umount /mnt/pico
 \item निम्न सी क्रमादेश
 \label{सम:क्रमादेश}
 \begin{lstlisting}
-codes/setup/blink/blink.c
+codes/setup/blink/main.c
 \end{lstlisting}
 की  इन पङ्क्तियों पर ध्यान दें । 
 %
 \begin{lstlisting}
-gpio_put(LED_PIN, 1);
+gpio_put(25, 1);
         sleep_ms(250);
-        gpio_put(LED_PIN, 0);
+        gpio_put(25, 0);
         sleep_ms(250);
 \end{lstlisting}
 %
