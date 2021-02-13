@@ -1,20 +1,21 @@
-/**
- * Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
- *
- * SPDX-License-Identifier: BSD-3-Clause
+/*
+Code by G V V Sharma
+Feb 13, 2021
+Released under GNU GPL
+https://www.gnu.org/licenses/gpl-3.0.en.html
  */
 
 #include "pico/stdlib.h"
 
 int main() {
-    const uint LED_PIN = 25;
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, GPIO_OUT);
+//initialize on board led (pin 25)
+    gpio_init(25); 
+
+//declaring pin 25 as output
+    gpio_set_dir(25, GPIO_OUT);
+
+//blink led
     while (true) {
-        gpio_put(LED_PIN, 1);
-/*        sleep_ms(250);
-        gpio_put(LED_PIN, 0);
-        sleep_ms(250);
-*/
+        gpio_put(25, 1);
     }
 }

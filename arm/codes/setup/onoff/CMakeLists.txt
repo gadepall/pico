@@ -2,8 +2,8 @@ cmake_minimum_required(VERSION 3.12)
 
 # initialize pico_sdk from submodule
 # note: this must happen before project()
-include(/home/gadepall/txhome/pico-sdk/pico_sdk_init.cmake)
-
+#include(/home/user/txhome/pico-sdk/pico_sdk_init.cmake)
+include(/data/data/com.termux/files/home/pico-sdk/pico_sdk_init.cmake)
 project(my_project)
 
 # initialize the Pico SDK
