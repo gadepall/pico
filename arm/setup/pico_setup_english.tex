@@ -346,7 +346,7 @@ https://github.com/gadepall/vaman/tree/master/arm/codes/blink
 \numberwithin{table}{enumi}
 
 \item  There is a button adjacent to the USB port of the Raspberry Pi.  
-Keep this button pressed while connecting the 
+Keep this button (BOOTSEL) pressed while connecting the 
 RPi to the Pico through the USB cable.
 %pico   के यूएसबी पत्तन के समक्ष   एक गण्ड  उपस्थित है।  इसे दबाते हुए  pico  एवं रास्पबेरी पै  को यूएसबी रज्जु से योजित करें।
 %\item  pico   के यूएसबी पत्तन के समक्ष   एक गण्ड  उपस्थित है।  इसे दबाते हुए  pico  एवं रास्पबेरी पै  को यूएसबी रज्जु से योजित करें।
@@ -359,9 +359,9 @@ mkdir build #Only once
 cd build
 cmake ..
 make -j4
-scp  blink.uf2 pi@192.168.0.114:
+scp  main.uf2 pi@192.168.0.114:
 \end{lstlisting}
-Suitably modify the above ip address before sending blink.uf2 .
+Suitably modify the above ip address before sending main.uf2 .
 \item Now login to the raspberry pi and execute the following commands.
 %अब रास्पबेरी पै  में प्रवेश कर निम्न  आदेश का चालयन करें
 \begin{lstlisting}
@@ -372,6 +372,8 @@ sudo mv /mnt/pico
 sudo umount /mnt/pico
 \end{lstlisting}
 You should now see the LED to the right of the USB port blinking.
+\item Connect RUN on pico to GND.  Keep pressing BOOTSEL while removing
+the RUN-GND wire from GND.  The LED stops blinking.  Pico is now ready to be flashed.
 %तत्पश्चात यूएसबी पत्तन के दक्षिण दिशा में  प्रकाश उत्सर्जक पीत रंग  में श्मीलित होगा। 
 %\item  तत्पश्चात यूएसबी पत्तन के दक्षिण दिशा में  प्रकाश उत्सर्जक पीत रंग  में श्मीलित होगा। 
 \end{enumerate}
@@ -389,12 +391,12 @@ You should now see the LED to the right of the USB port blinking.
 %निम्न सी क्रमादेश
 \label{सम:क्रमादेश}
 \begin{lstlisting}
-codes/setup/blink/blink.c
+codes/setup/blink/main.c
 \end{lstlisting}
 %की  इन पङ्क्तियों पर ध्यान दें । 
 %
 \begin{lstlisting}
-gpio_put(LED_PIN, 1);
+	gpio_put(LED_PIN, 1);
         sleep_ms(250);
         gpio_put(LED_PIN, 0);
         sleep_ms(250);
@@ -424,7 +426,7 @@ Can you see any difference in the LED blinking frequency?
 \begin{lstlisting}
 codes/setup/onoff/main.c
 \end{lstlisting}
-\item Use GP0 as an output pin and drive an LED.
+\item Use GP2 as an output pin and drive an LED.
 %एक अन्य pin को Output रूप देकर किसी बाह्य दीप को प्रकाशोर्जित करें। 
 \\
 \solution  Connect the LED to pico as per Table \ref{table:setup_led} and Fig. \ref{fig:pin_sheet}
@@ -440,18 +442,18 @@ codes/setup/gpio/main.c
 \hline
 Type & pico  pin  &  Destination \\ \hline
 Output &  3V3 &  LED\\ \hline
-Output  & GP0  &  LED\\ \hline
+Output  & GP2  &  LED\\ \hline
 %प्रकार & pico  pin  &  गम्य \\ \hline
 %Output &  3V3 &  LED\\ \hline
-%Output  & GP0  &  LED\\ \hline
+%Output  & GP2  &  LED\\ \hline
 \end{tabular}
 \caption{Connection between LED and pico}
 \label{table:setup_led}
 \end{table}
 
-\item  Execute the following code.  Connect a wire to GND and touch GP0 on the pico.  The onboard LED will turn off.
+\item  Execute the following code.  Connect a wire to GND and touch GP2 on the pico.  The onboard LED will turn off.
 Repeat this exercise to blink the LED manually.
-%निम्न क्रमादेश को चलायित कर GND से एक तंतु को GP0 से स्पर्शित करें। दीप प्रकाशहीन रहेगा। इस क्रिया की पुरावृत्ति पर  दीप श्मीलित होता रहेगा।  
+%निम्न क्रमादेश को चलायित कर GND से एक तंतु को GP2 से स्पर्शित करें। दीप प्रकाशहीन रहेगा। इस क्रिया की पुरावृत्ति पर  दीप श्मीलित होता रहेगा।  
 \begin{lstlisting}
 codes/setup/input/main.c
 \end{lstlisting}

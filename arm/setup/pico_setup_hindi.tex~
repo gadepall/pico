@@ -415,7 +415,7 @@ codes/setup/gpio/main.c
 \hline
 प्रकार & पीको कुश  &  गम्य \\ \hline
 निर्गत &  3V3 &  LED\\ \hline
-निर्गत  & GP0  &  LED\\ \hline
+निर्गत  & GP2  &  LED\\ \hline
 
 \end{tabular}
 \end{table}
